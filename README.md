@@ -16,12 +16,12 @@ Evaluatorは使うほど賢くなる「自己成長型」設計です。
 公式ドキュメントを参照してインストールしてください。
 https://docs.anthropic.com/claude/docs/claude-code
 
-### 2. このリポジトリをクローン
+### 2. テンプレートから自分のリポジトリを作成
 
-```bash
-git clone <リポジトリURL>
-cd claude-pge-assistant
-```
+GitHubの **[Use this template]** ボタンをクリックして、自分のアカウントに新しいリポジトリを作成します。
+作成後、そのリポジトリをクローンしてください。
+
+> ⚠️ このリポジトリを直接クローンして使用しないでください。
 
 ### 3. Claude Code を起動
 
