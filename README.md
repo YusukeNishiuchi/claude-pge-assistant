@@ -52,44 +52,38 @@ Planner → Generator → Evaluator の順に自動で処理されます。
 フィードバックが `criteria/evaluator-criteria.md` に蓄積され、
 次回から採点基準に反映されます。
 
-## ロジカルシンキング10ルール
-
-すべてのエージェント（Planner、Generator、Evaluator）は、`rules/logical-thinking-rules.md` に定義された10個のルールに基づいて動作します。
-
-主なルール：
-1. 質問の解釈を先に提示する
-2. 事実に基づいて回答する
-3. 仮定・前提を明示する
-4. PDCAを繰り返した結果として回答する
-5. 曖昧さを排除する
-6. ロジカルシンキングのフレームワークを使う（MECE、ピラミッド構造等）
-7. 視点を網羅し、明示する
-8. リスク・懸念を必ず記載する
-9. 対案とメリット・デメリットを必ず提示する
-10. 因果関係の飛躍を禁止する
-
-これらのルールにより、すべての成果物の品質が統一され、論理的思考が担保されます。
-
 ## ファイル構成
 
 ```
 claude-pge-assistant/
-├── CLAUDE.md                 # プロジェクト定義
+├── CLAUDE.md                 # Claudeへの実行時指示
 ├── README.md                 # このファイル
 ├── rules/
-│   └── logical-thinking-rules.md # ロジカルシンキング10ルール（全エージェントが参照）
+│   ├── logical-thinking-rules.md # ロジカルシンキング10ルール（全エージェントが参照）
+│   └── scoring-rules.md          # 採点観点・配点・合格ライン
 ├── .claude/
 │   ├── agents/
 │   │   ├── planner.md        # タスク仕様書生成
 │   │   ├── generator.md      # 成果物作成
 │   │   └── evaluator.md      # 品質評価（自己成長型）
-│   └── commands/
-│       ├── do-task.md        # メインコマンド
-│       └── good-point.md     # フィードバック収集
+│   ├── commands/
+│   │   ├── do-task.md        # メインコマンド
+│   │   └── good-point.md     # フィードバック収集
+│   └── skills/
+│       └── pdca-reflection.md    # PDCA反映スキル（planner・evaluator共通）
 ├── criteria/
 │   └── evaluator-criteria.md # 採点基準（蓄積ファイル）
 └── outputs/                  # 作業成果物の保存場所
 ```
+
+### ファイルの役割分担
+
+| ファイル | 内容 | 参照元 |
+|---------|------|--------|
+| `rules/logical-thinking-rules.md` | 思考プロセスの10ルール | 全エージェント |
+| `rules/scoring-rules.md` | 採点観点・配点・合格ライン | evaluator・do-task |
+| `.claude/skills/pdca-reflection.md` | criteriaを読んでPDCAに活かす手順 | planner・evaluator |
+| `criteria/evaluator-criteria.md` | 蓄積された採点基準 | pdca-reflection経由 |
 
 ## 採点基準の共有（チーム展開時）
 
